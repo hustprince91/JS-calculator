@@ -1,39 +1,55 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Counselor option</title>
 </head>
+
 <body>
 
-<form>
-    <input type="text" name="number1">
-    <select name="select">
-        <option>Select</option>
-        <option>+</option>
-        <option>-</option>
-        <option>*</option>
-        <option>/</option>
-    </select>
-    <input type="text" name="number2">
-    =
-    <button type="submit">Calculate</button>
-</form>
+    <form onsubmit="Calculate(event)">
+        <input type="text" onchange="numberChange(event)" name="number1" id="number1">
+        <select name="select" id="selectId">
+            <option>Select</option>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="x">*</option>
+            <option value=":">/</option>
+        </select>
+        <input type="text" name="number2" id="number2" onchange="numberChange(event)">
+        <button type="submit">Calculate</button>
+    </form>
 
-<div>
-    Value í <input type="text" name="result">.<br>
-    Clear Values and Try again. <button type="button">Clear</button>
-</div>
+    <div>
+        Value is <input type="text" id="result">.<br>
+        Clear Values and Try again. <button type="button" onclick="Clear(event)">Clear</button>
+    </div>
 
-<h3>Optional</h3>
-<div>
-    Random input Values.
-    number1 -> random number 0~10000,
-    number2 -> random number 0~10000,
-    select -> select one.
-    result -> number1 select number2 
+    <div>
+        Random input Values.<br>
+        number1 -> random number 0~10000,<br>
+        number2 -> random number 0~10000,<br>
+        select -> select one.<br>
+        result -> number1 select number2<br>
 
-    <button type="button">Random</button>
-</div>
+        <button type="button" onclick="Randomnumber()">Random</button>
+    </div>
+
+    <div>
+        <h3>Validation</h3>
+        click the calculate button,<br>
+        if number1, number2 is not number type or null, display alert message:<br>
+        ì selectId is not selected, display alert:<br>
+    </div>
+
+    <div>
+        <h3>History</h3>
+        <h4>이전 계산했던 리스트는 아래에 나타납니다. 최근 계산된 값이 상단에 위치되어야 합니다.</h4>
+        <ul id="history-list">
+        </ul>
+    </div>
+    <script src="calculator.js"></script>
 
 </body>
+
 </html>
